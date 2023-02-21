@@ -1,0 +1,11 @@
+.filter-bar {
+  display: flex;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar__title {
+  flex-basis: 100%;
+  text-align: left;
+  font-size: 0.7rem;  
+}
