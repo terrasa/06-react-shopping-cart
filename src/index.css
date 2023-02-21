@@ -16,8 +16,9 @@
 }
 
 #root {
+  position: relative;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
   text-align: center;
   width: 100%;
 }
@@ -41,7 +42,7 @@ button {
   color: #fff;
   cursor: pointer;
   transition: border-color 0.25s;
-}
+}#242424;
 button:hover {
   border-color: #646cff;
 }
@@ -55,10 +56,15 @@ ul {
   padding: 0;
 }
 
-p {
+p, h1 {
   margin: 0;
 }
 
+.fixed-top {
+  width: 100%;
+  position: fixed;
+}
 
-
-
+.bg-dark {
+  background-color: #242424;
+}

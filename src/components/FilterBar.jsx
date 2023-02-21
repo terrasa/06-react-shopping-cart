@@ -1,6 +1,7 @@
 import './FilterBar.css'
 
 export function FilterBar ({ filters, setFilters, products, productJsonInfo }) {
+  console.log('FilterBar')
   const handleFilter = (event) => {
     if (filters === event.target.name) return
     const newFilters = event.target.name
@@ -8,8 +9,9 @@ export function FilterBar ({ filters, setFilters, products, productJsonInfo }) {
   }
 
   return (
-    <section>
+    <section className='fixed-top bg-dark'>
       <header>
+        <h1>Shopping Cart</h1>
         <p>El número de referencias disponibles en la tienda es: {productJsonInfo.total}</p>
         <p>Se muestran {productJsonInfo.limit} referencias de {productJsonInfo.total}</p>
       </header>
