@@ -1,6 +1,12 @@
 import './FilterBar.css'
 
-export function FilterBar ({ products, productJsonInfo }) {
+export function FilterBar ({ filters, setFilters, products, productJsonInfo }) {
+  const handleFilter = (event) => {
+    if (filters === event.target.name) return
+    const newFilters = event.target.name
+    setFilters(newFilters)
+  }
+
   return (
     <section>
       <header>
@@ -9,8 +15,8 @@ export function FilterBar ({ products, productJsonInfo }) {
       </header>
       <div className='filter-bar'>
         <p className='filter-bar__title'>Filtros</p>
-        <button>
-          Categoría
+        <button name='laptops' onClick={handleFilter}>
+          Categoría laptops
         </button>
         <button>
           Precio Ascendente
