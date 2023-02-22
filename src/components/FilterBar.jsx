@@ -4,15 +4,32 @@ export function FilterBar ({ filters, setFilters, productJsonInfo, products }) {
   console.log('FilterBar')
   const categoriesInProducts = products.map(product => product.category)
   const [...categories] = new Set(categoriesInProducts) // console.log([...new Set(numbers)]);
+  categories.unshift('All')
 
   console.log('categories', categories)
   console.log('categories SET', new Set(categories))
 
   const handleFilter = (event) => {
-    if (filters === event.target.name) return
-    const newFilters = event.target.name
-    setFilters(newFilters)
+    console.log('value', event.target.value)
+    if (filters.includes(event.target.value)) return
+    const newFilters = event.target.value
+    const getFilters = [...filters, newFilters]
+    setFilters(getFilters)
   }
+
+  // const handleFilterPrice = (event) => {
+  //   console.log('value', event.target.value)
+  //   if (filtersPrice.includes(event.target.value)) return
+  //   const newFilters = [event.target.value]
+  //   // const getFilters = [...filters, newFilters]
+  //   setFilters(newFilters)
+  // }
+
+  // const handleFilter = (event) => {
+  //   if (filters === event.target.name) return
+  //   const newFilters = event.target.name
+  //   setFilters(newFilters)
+  // }
   // const price = document.querySelector('#price')
   // const output = document.querySelector('.price-output')
 
@@ -37,7 +54,7 @@ export function FilterBar ({ filters, setFilters, productJsonInfo, products }) {
         </button>
         <div>
           <label htmlFor='category'>Categoría</label>
-          <select name='category' id='category'>
+          <select name='category' id='category' onChange={handleFilter}>
             {
               categories.map(category => (
                 <option value={category} key={category}>{category}</option>
