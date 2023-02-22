@@ -6,15 +6,32 @@ export function FilterBar ({ filters, setFilters, productJsonInfo, products }) {
   const [...categories] = new Set(categoriesInProducts) // console.log([...new Set(numbers)]);
   categories.unshift('All')
 
-  console.log('categories', categories)
-  console.log('categories SET', new Set(categories))
+  // console.log('categories', categories)
+  // console.log('categories SET', new Set(categories))
+
+  // const handleFilter = (event) => {
+  //   console.log('value', event.target.value)
+  //   if (filters.includes(event.target.value)) return
+  //   const newFilters = event.target.value
+  //   const getFilters = [...filters, newFilters]
+  //   setFilters(getFilters)
+  // }
 
   const handleFilter = (event) => {
     console.log('value', event.target.value)
     if (filters.includes(event.target.value)) return
-    const newFilters = event.target.value
-    const getFilters = [...filters, newFilters]
-    setFilters(getFilters)
+    if (event.target.value === 'All') {
+      setFilters(['All'])
+    } else {
+      const newFilters = event.target.value
+      const getFilters = [...filters, newFilters]
+
+      if (getFilters.includes('All')) {
+        const indexAll = getFilters.indexOf('All')
+        getFilters.splice(indexAll, 1)
+      }
+      setFilters(getFilters)
+    }
   }
 
   // const handleFilterPrice = (event) => {
@@ -40,6 +57,7 @@ export function FilterBar ({ filters, setFilters, productJsonInfo, products }) {
   // })
   // <output className='price-output' for='price' />
 
+  // onChange={handleFilterPrice}
   return (
     <section className='fixed-top bg-dark z-index-1'>
       <header>
@@ -49,9 +67,6 @@ export function FilterBar ({ filters, setFilters, productJsonInfo, products }) {
       </header>
       <div className='filter-bar'>
         <p className='filter-bar__title'>Filtros</p>
-        <button name='laptops' onClick={handleFilter}>
-          Categoría laptops
-        </button>
         <div>
           <label htmlFor='category'>Categoría</label>
           <select name='category' id='category' onChange={handleFilter}>
@@ -63,9 +78,10 @@ export function FilterBar ({ filters, setFilters, productJsonInfo, products }) {
           </select>
         </div>
         <div>
-          <label htmlFor='price'>Rango de precio</label>
+          <label htmlFor='price'>Articulos con P.V.P. menor de: </label>
           <input type='range' name='price' id='price' min='5' max='2000' />
         </div>
+        {/* <p className="products-displayed"> Productos mostrados: {filteredProducts.lenght - newFilteredProducts.flat().length}</p> */}
       </div>
     </section>
   )

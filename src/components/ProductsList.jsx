@@ -3,8 +3,8 @@ import { AddToCartIcon } from './icons'
 // import { useEffect, useState } from 'react'
 
 export function ProductsList ({ filteredProducts }) {
-  console.log('ProductsList')
-  console.log('ProductsList', filteredProducts)
+  // console.log('ProductsList')
+  // console.log('ProductsList', filteredProducts)
 
   return (
     <main className='products'>

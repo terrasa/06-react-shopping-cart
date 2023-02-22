@@ -4,8 +4,19 @@
   flex-wrap: wrap;
 }
 
+.filter-bar > div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.filter-bar > div > label {
+  font-size: 0.8;
+  font-weight: 600;
+}
+
 .filter-bar__title {
   flex-basis: 100%;
   text-align: left;
-  font-size: 0.7rem;  
+  font-size: 0.8rem;  
 }
