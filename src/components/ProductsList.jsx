@@ -1,31 +1,16 @@
 import './ProductsList.css'
 import { AddToCartIcon } from './icons'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 
-export function ProductsList ({ filters, products, productJsonInfo }) {
+export function ProductsList ({ filteredProducts }) {
   console.log('ProductsList')
-
-  // const [category, setCategory] = useState()
-  const [productsFiltered, setProductsFiltered] = useState(products)
-
-  useEffect(() => {
-    console.log('useEffect filters >> ')
-    const filteredList = async () => {
-      if (filters.length !== 0) {
-        const newProductsFiltered = await products.filter(product => product.category === filters)
-        setProductsFiltered(await newProductsFiltered)
-        // return await newProductsFiltered
-      }
-      // return products
-    }
-    filteredList()
-  }, [filters])
+  console.log('ProductsList', filteredProducts)
 
   return (
     <main className='products'>
 
       <ul>
-        {productsFiltered.map(product => (
+        {filteredProducts.map(product => ( // slice(0, 10)
           <li key={product.id} className='products__card'>
             <h3>{product.title}</h3>
             <p>{product.description}</p>

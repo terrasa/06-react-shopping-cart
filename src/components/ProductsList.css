@@ -1,3 +1,9 @@
+.products {
+  position: relative;
+  top: 200px;
+  z-index: 0;
+}
+
 .products > ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);

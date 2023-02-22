@@ -42,7 +42,8 @@ button {
   color: #fff;
   cursor: pointer;
   transition: border-color 0.25s;
-}#242424;
+}
+
 button:hover {
   border-color: #646cff;
 }
@@ -67,4 +68,8 @@ p, h1 {
 
 .bg-dark {
   background-color: #242424;
+}
+
+.z-index-1 {
+  z-index: 1;
 }

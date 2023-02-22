@@ -2,7 +2,6 @@
   display: flex;
   gap: 0.5rem 1rem;
   flex-wrap: wrap;
-  padding-bottom: 1rem;
 }
 
 .filter-bar__title {
