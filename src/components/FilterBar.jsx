@@ -2,12 +2,12 @@ import { useContext, useId } from 'react'
 import { FiltersContext } from '../context/Filters'
 import './FilterBar.css'
 
-export function FilterBar ({ filteredProducts, setFilteredProducts, productJsonInfo, products }) {
+export function FilterBar ({ productJsonInfo, products }) {
   console.log('FilterBar')
+  const { filters, setFilters, filterPrice, setFilterPrice, setFilteredProducts } = useContext(FiltersContext)
   const categoriesInProducts = products.map(product => product.category)
   const [...categories] = new Set(categoriesInProducts)
   categories.unshift('All')
-  const { filters, setFilters, filterPrice, setFilterPrice } = useContext(FiltersContext)
 
   const categoryFilterID = useId()
   const minPriceFilterId = useId()

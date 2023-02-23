@@ -1,10 +1,11 @@
 import './ProductsList.css'
 import { AddToCartIcon } from './icons'
-// import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { FiltersContext } from '../context/Filters'
 
-export function ProductsList ({ filteredProducts }) {
+export function ProductsList () {
   // console.log('ProductsList')
-  // console.log('ProductsList', filteredProducts)
+  const { filteredProducts } = useContext(FiltersContext)
 
   return (
     <main className='products'>

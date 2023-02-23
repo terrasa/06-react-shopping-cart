@@ -1,11 +1,14 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { FiltersContext } from '../context/Filters'
 import productsList from '../mocks/products.json'
 
 export function useDisplayedProducts () {
   const { products, ...productJsonInfo } = productsList
-  const { filters, setFilters, filterPrice, setFilterPrice } = useContext(FiltersContext)
-  const [filteredProducts, setFilteredProducts] = useState(products)
+  const {
+    filters, setFilters, filterPrice, setFilterPrice,
+    filteredProducts, setFilteredProducts
+  } = useContext(FiltersContext)
+
   let newFilteredProducts = []
 
   useEffect(() => {
@@ -30,5 +33,5 @@ export function useDisplayedProducts () {
     filteredList()
   }, [filters, filterPrice])
 
-  return { filterPrice, setFilterPrice, filters, setFilters, filteredProducts, setFilteredProducts, products, ...productJsonInfo }
+  return { products, ...productJsonInfo }
 }
