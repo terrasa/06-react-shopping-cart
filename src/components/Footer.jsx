@@ -3,6 +3,8 @@ import { FiltersContext } from '../context/Filters'
 import './Footer.css'
 
 export function Footer () {
+  console.log('Footer >> ')
+
   const { filters, filterPrice } = useContext(FiltersContext)
 
   return (

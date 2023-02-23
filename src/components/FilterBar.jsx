@@ -2,9 +2,12 @@ import { useContext, useId } from 'react'
 import { FiltersContext } from '../context/Filters'
 import './FilterBar.css'
 
-export function FilterBar ({ productJsonInfo, products }) {
+export function FilterBar () {
   console.log('FilterBar')
-  const { filters, setFilters, filterPrice, setFilterPrice, setFilteredProducts } = useContext(FiltersContext)
+  const {
+    filters, setFilters, filterPrice, setFilterPrice,
+    setFilteredProducts, products, productJsonInfo
+  } = useContext(FiltersContext)
   const categoriesInProducts = products.map(product => product.category)
   const [...categories] = new Set(categoriesInProducts)
   categories.unshift('All')

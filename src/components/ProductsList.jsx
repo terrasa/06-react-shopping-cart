@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { FiltersContext } from '../context/Filters'
 
 export function ProductsList () {
-  // console.log('ProductsList')
+  console.log('ProductsList')
   const { filteredProducts } = useContext(FiltersContext)
 
   return (
