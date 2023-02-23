@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { FiltersContext } from '../context/Filters'
 import productsList from '../mocks/products.json'
+
 export function useDisplayedProducts () {
   const { products, ...productJsonInfo } = productsList
-  const [filters, setFilters] = useState(['All'])
-  const [filterPrice, setFilterPrice] = useState('300')
+  const { filters, setFilters, filterPrice, setFilterPrice } = useContext(FiltersContext)
   const [filteredProducts, setFilteredProducts] = useState(products)
   let newFilteredProducts = []
 
   useEffect(() => {
-    console.log('useEffect filters >> ')
+    console.log('useEffect filters >> ', filters)
     const filteredList = () => {
       if (filters.length !== 0) { // no necesario si por defecto all esta selected ???
         if (filters.includes('All')) {

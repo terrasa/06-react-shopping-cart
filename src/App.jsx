@@ -4,14 +4,14 @@ import { useDisplayedProducts } from './hooks/useDisplayedProducts'
 import { Footer } from './components/Footer'
 
 function App () {
-  const { filterPrice, setFilterPrice, filters, setFilters, filteredProducts, setFilteredProducts, products, ...productJsonInfo } = useDisplayedProducts()
-  console.log('Selected filters', filters)
+  const { filteredProducts, setFilteredProducts, products, ...productJsonInfo } = useDisplayedProducts()
+  console.log('Selected filters')
 
   return (
     <>
-      <FilterBar filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} filterPrice={filterPrice} setFilterPrice={setFilterPrice} filters={filters} setFilters={setFilters} productJsonInfo={productJsonInfo} products={products} />
+      <FilterBar filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts} productJsonInfo={productJsonInfo} products={products} />
       <ProductsList filteredProducts={filteredProducts} />
-      <Footer filters={filters} filterPrice={filterPrice} />
+      <Footer />
     </>
   )
 }
