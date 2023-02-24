@@ -12,7 +12,14 @@ export function FiltersProvider ({ children }) {
 
   return (
     <FiltersContext.Provider value={{
-      filters, setFilters, filterPrice, setFilterPrice, filteredProducts, setFilteredProducts, products, productJsonInfo
+      filters,
+      setFilters,
+      filterPrice,
+      setFilterPrice,
+      filteredProducts,
+      setFilteredProducts,
+      products,
+      productJsonInfo
     }}
     >
       {children}

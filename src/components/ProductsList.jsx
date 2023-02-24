@@ -2,11 +2,12 @@ import './ProductsList.css'
 import { AddToCartIcon } from './icons'
 import { useContext } from 'react'
 import { FiltersContext } from '../context/Filters'
+import { useCart } from '../hooks/useCart'
 
 export function ProductsList () {
   console.log('ProductsList')
   const { filteredProducts } = useContext(FiltersContext)
-
+  const { addToCart } = useCart()
   return (
     <main className='products'>
 
@@ -35,14 +36,13 @@ export function ProductsList () {
                 <p className='box-info__title'>PVP</p>
                 <p>{product.price}€/unid.</p>
               </div>
-              <button>
+              <button onClick={() => addToCart(product)}>
                 <AddToCartIcon />
               </button>
             </div>
           </li>
         ))}
       </ul>
-
     </main>
   )
 }
