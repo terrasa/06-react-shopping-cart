@@ -5,11 +5,14 @@ export const CartContext = createContext()
 export function CartProvider ({ children }) {
   const [cart, setCart] = useState([])
 
+  const checkProductInCart = (product) => {
+    const productInCartIndex = cart.findIndex(item => item.id === product.id)
+    return productInCartIndex
+  }
+
   const addToCart = product => {
     // setCart([...cart, product])
     const productInCartIndex = cart.findIndex(item => item.id === product.id)
-    console.log('productInCartIndex', productInCartIndex)
-    console.log('DATA product', product)
     console.log('DATA cart', cart)
     // if (cart.includes(product)) {
     //   const productInCartIndex2 = cart.indexOf(product)
@@ -18,7 +21,6 @@ export function CartProvider ({ children }) {
 
     if (productInCartIndex >= 0) {
       const newCart = structuredClone(cart)
-      console.log('newCart', newCart)
 
       newCart[productInCartIndex].quantity += 1
       return setCart(newCart)
@@ -33,6 +35,19 @@ export function CartProvider ({ children }) {
     ]))
   }
 
+  const removeToCart = (product) => {
+    const productInCartIndex = checkProductInCart(product)
+    console.log('remove ', cart[productInCartIndex].quantity)
+    if (cart[productInCartIndex].quantity === 1) {
+      setCart(prevState => prevState.filter(item => item.id !== product.id))
+      return
+    }
+
+    const newCart = structuredClone(cart)
+    newCart[productInCartIndex].quantity -= 1
+    setCart(newCart)
+  }
+
   const clearCart = () => {
     setCart([])
   }
@@ -40,7 +55,9 @@ export function CartProvider ({ children }) {
   return (
     <CartContext.Provider value={{
       cart,
+      setCart,
       addToCart,
+      removeToCart,
       clearCart
     }}
     >

@@ -38,6 +38,12 @@
   flex: 1;
 }
 
+.cart-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
 .box-info {
 
 }
