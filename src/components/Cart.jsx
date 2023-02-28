@@ -1,14 +1,14 @@
 import './Cart.css'
-import { useContext, useId } from 'react'
+import { useId } from 'react'
 import { CartIcon, ClearCartIcon } from './icons'
-import { CartContext } from '../context/cart'
+// import { CartContext } from '../context/cart'
 import { useCart } from '../hooks/useCart'
 
 export function Cart () {
   const cartCheckboxId = useId()
-  // const { cart, clearCart, addToCart, removeToCart, totalQuantity } = useCart()
+  const { cart, clearCart, addToCart, removeToCart, totalQuantity } = useCart()
 
-  const { cart, clearCart, addToCart, removeToCart, totalQuantity } = useContext(CartContext)
+  // const { cart, clearCart, addToCart, removeToCart, totalQuantity } = useContext(CartContext)
   console.log('cesta ', cart)
   console.log('cesta totalQuantity', totalQuantity)
   // let units = 0
