@@ -1,12 +1,13 @@
 .cart {
   background: #000;
   display: none;
-  padding: 42px 32px 32px;
+  padding: 42px 32px 0;
   position: fixed;
   right: 0px;
   top: 0px;
   width: 200px;
   z-index: 2;
+  overflow-y: auto;
 }
 
 .cart img {
@@ -28,6 +29,10 @@
 
 .cart footer button {
   padding: 8px;
+}
+
+.cart > button {
+  margin-bottom: 64px
 }
 
 .cart-button {

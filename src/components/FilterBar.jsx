@@ -62,7 +62,7 @@ export function FilterBar () {
         </div>
         <div>
           <label htmlFor={minPriceFilterId}>P.V.P. menor de: </label>
-          <input type='range' name='price' id={minPriceFilterId} min='50' max='2000' step='50' value='300' onChange={handleFilterPrice} />
+          <input type='range' name='price' id={minPriceFilterId} min='50' max='2000' step='50' onChange={handleFilterPrice} />
           <span>{filterPrice}</span>
         </div>
         {/* <p className="products-displayed"> Productos mostrados: {filteredProducts.lenght - newFilteredProducts.flat().length}</p> */}

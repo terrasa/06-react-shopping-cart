@@ -6,28 +6,20 @@ import { useCart } from '../hooks/useCart'
 
 export function Cart () {
   const cartCheckboxId = useId()
-  const { cart, clearCart, addToCart, removeToCart } = useCart()
-  // const { cart, clearCart, addToCart, removeToCart } = useContext(CartContext)
+  // const { cart, clearCart, addToCart, removeToCart, totalQuantity } = useCart()
+
+  const { cart, clearCart, addToCart, removeToCart, totalQuantity } = useContext(CartContext)
   console.log('cesta ', cart)
-  let units
-  const quantityTotal = cart.forEach(item => {
-    units = units + item.quantity
-  })
+  console.log('cesta totalQuantity', totalQuantity)
+  // let units = 0
+  // const totalQuantity = cart.forEach(item => {
+  //   units = units + item.quantity
+  //   console.log('items q ', item, item.quantity, units)
+  // })
   const cartHasItems = cart.length !== 0
   const cartTitle = cartHasItems
-    ? `Hola, tienes ${cart.length} artículos y un total de ${quantityTotal} unidades en la cesta`
+    ? `Hola, tienes ${cart.length} artículos y un total de ${totalQuantity} unidades en la cesta`
     : 'Hola, tu cesta de la compra está vacia'
-
-  console.log('CCARTT', cart)
-
-  // const { handlerClearCart } = useCart()
-  // const handlerClearCart = () => {
-  //   clearCart
-  // }
-
-  const handlerAddQuantity = () => {
-
-  }
 
   return (
     <>
@@ -62,30 +54,6 @@ export function Cart () {
             <ClearCartIcon />
           </button>}
       </aside>
-
-      {/* {cartHasItems &&
-          `<aside className='cart'>
-        <ul>
-          <li>
-            <img
-              src=${cart.thumbnail}
-              alt=${cart.title}
-            />
-            <div>
-              <strong>${cart.title}</strong> - {cart.price} €/unid.
-            </div>
-            <footer>
-              <small>Unid: {cart.quantity}</small>
-              <button onClick={handlerAddQuantity}>+</button>
-            </footer>
-          </li>
-        </ul>
-
-        <button>
-          <ClearCartIcon onClick={handlerClearCart} />
-        </button>
-      </aside>`} */}
-
     </>
   )
 }

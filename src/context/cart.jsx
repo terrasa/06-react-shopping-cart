@@ -1,9 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 export const CartContext = createContext()
 
 export function CartProvider ({ children }) {
   const [cart, setCart] = useState([])
+  const [totalQuantity, setTotalQuantity] = useState(0)
 
   const checkProductInCart = (product) => {
     const productInCartIndex = cart.findIndex(item => item.id === product.id)
@@ -14,10 +15,6 @@ export function CartProvider ({ children }) {
     // setCart([...cart, product])
     const productInCartIndex = cart.findIndex(item => item.id === product.id)
     console.log('DATA cart', cart)
-    // if (cart.includes(product)) {
-    //   const productInCartIndex2 = cart.indexOf(product)
-    //   console.log('productInCartIndex2', productInCartIndex2)
-    // }
 
     if (productInCartIndex >= 0) {
       const newCart = structuredClone(cart)
@@ -52,13 +49,25 @@ export function CartProvider ({ children }) {
     setCart([])
   }
 
+  useEffect(() => {
+    if (cart.length === 0) return
+    let units = 0
+    cart.forEach(item => {
+      units = (units + item.quantity)
+      console.log('items q ', item, item.quantity, units)
+    })
+    setTotalQuantity(units)
+  }, [cart])
+
   return (
     <CartContext.Provider value={{
       cart,
       setCart,
       addToCart,
       removeToCart,
-      clearCart
+      clearCart,
+      totalQuantity,
+      setTotalQuantity
     }}
     >
       {children}
